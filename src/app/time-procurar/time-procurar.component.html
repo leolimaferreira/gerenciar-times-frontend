@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Procurar Time</h2>
+
+  <div class="busca-container">
+    <input
+      type="number"
+      [(ngModel)]="timeId"
+      placeholder="Digite o ID do time"
+      (keyup.enter)="obterTime()"
+    >
+    <button (click)="obterTime()" [disabled]="carregando">
+      {{ carregando ? 'Buscando...' : 'Buscar' }}
+    </button>
+  </div>
+
+  <div *ngIf="carregando" class="loading">
+    <p>Carregando...</p>
+  </div>
+
+  <div *ngIf="erro" class="erro">
+    {{ erro }}
+  </div>
+
+  <div *ngIf="timeEncontrado" class="time-info">
+    <h3>Informações do Time</h3>
+    <p><strong>Nome:</strong> {{ timeEncontrado.nome }}</p>
+    <p><strong>Cidade:</strong> {{ timeEncontrado.cidade }}</p>
+    <p><strong>Estado:</strong> {{ timeEncontrado.estado }}</p>
+    <p><strong>Estádio:</strong> {{ timeEncontrado.estadio }}</p>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Gerenciar Time</h2>
+
+  <div class="busca-container">
+    <input
+      type="number"
+      [(ngModel)]="timeId"
+      placeholder="Digite o ID do time"
+      (keyup.enter)="buscarTime()"
+      min="0"
+    >
+    <button (click)="buscarTime()" [disabled]="carregando">
+      {{ carregando ? 'Buscando...' : 'Buscar' }}
+    </button>
+  </div>
+
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+
+  <div *ngIf="carregando" class="loading">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+
+  <div *ngIf="timeEncontrado" class="time-info">
+    <h3>Informações do Time</h3>
+    <p><strong>ID:</strong> {{ timeEncontrado.id }}</p>
+    <p><strong>Nome:</strong> {{ timeEncontrado.nome }}</p>
+    <p><strong>Cidade:</strong> {{ timeEncontrado.cidade }}</p>
+    <p><strong>Estado:</strong> {{ timeEncontrado.estado }}</p>
+    <p><strong>Estádio:</strong> {{ timeEncontrado.estadio }}</p>
+
+    <button
+      class="btn-deletar"
+      (click)="confirmarDelecao()"
+      [disabled]="carregando"
+    >
+      Deletar Time
+    </button>
+  </div>
+</div>

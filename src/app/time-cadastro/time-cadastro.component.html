@@ -1,0 +1,15 @@
+<form (ngSubmit)="salvar()">
+  <label>
+    Nome: <input [(ngModel)]="time.nome" name="nome" required />
+  </label><br />
+  <label>
+    Cidade: <input [(ngModel)]="time.cidade" name="cidade" />
+  </label><br />
+  <label>
+    Estado: <input [(ngModel)]="time.estado" name="estado" />
+  </label><br />
+  <label>
+    Estádio: <input [(ngModel)]="time.estadio" name="estadio" />
+  </label><br />
+  <button type="submit">Salvar</button>
+</form>
