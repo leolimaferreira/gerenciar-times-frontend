@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Jogadores Cadastrados</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Posição</th>
+      <th>Valor</th>
+      <th>Pontuação</th>
+      <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let jogador of jogadores">
+      <td>{{ jogador.nome }}</td>
+      <td>{{ jogador.posicao }}</td>
+      <td>{{ jogador.valor }}</td>
+      <td>{{ jogador.pontuacao }}</td>
+      <td>{{ jogador.time?.nome || 'Sem time' }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

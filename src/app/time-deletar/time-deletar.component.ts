@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import {ToastModule} from 'primeng/toast';
-import {TimeService} from '../services/time';
+import {TimeService} from '../services/time.service';
 import {ProgressSpinner} from 'primeng/progressspinner';
 import {TimeDTO} from '../dtos/time.dto';
 
@@ -63,6 +63,11 @@ export class TimeDeletarComponent {
     if (!this.timeEncontrado?.id) return;
 
     this.carregando = true;
+
+    const timeoutId = setTimeout(() => {
+      this.carregando = false;
+      this.mostrarErro('Tempo excedido na requisição');
+    }, 10000);
 
     this.timeService.delete(this.timeEncontrado.id).subscribe({
       next: () => {

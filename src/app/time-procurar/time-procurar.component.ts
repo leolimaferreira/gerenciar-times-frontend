@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {TimeService} from '../services/time';
+import {TimeService} from '../services/time.service';
 import {TimeDTO} from '../dtos/time.dto';
 
 @Component({

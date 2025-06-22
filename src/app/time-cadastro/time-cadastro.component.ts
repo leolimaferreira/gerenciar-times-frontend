@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {TimeService} from '../services/time';
+import {TimeService} from '../services/time.service';
 import {FormsModule} from '@angular/forms';
 import {CriarTimeDTO} from '../dtos/criar-time.dto';
 
