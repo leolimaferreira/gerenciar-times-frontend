@@ -1,0 +1,21 @@
+<form (ngSubmit)="salvar()">
+  <label>
+    Nome: <input [(ngModel)]="jogador.nome" name="nome" required />
+  </label><br />
+  <label>
+    Nascimento: <input [(ngModel)]="jogador.nascimento" name="nascimento" />
+  </label><br />
+  <label>
+    Posição: <input [(ngModel)]="jogador.posicao" name="posicao" />
+  </label><br />
+  <label>
+    Valor: <input [(ngModel)]="jogador.valor" name="valor" />
+  </label><br />
+  <label>
+    Pontuação: <input [(ngModel)]="jogador.pontuacao" name="pontuacao" />
+  </label><br />
+  <label>
+    Id do Time: <input [(ngModel)]="jogador.timeId" name="timeId" />
+  </label><br />
+  <button type="submit">Salvar</button>
+</form>

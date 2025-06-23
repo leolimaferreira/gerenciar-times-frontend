@@ -1,0 +1,89 @@
+<div class="container">
+  <h2>Atualizar Jogador</h2>
+
+  <div class="busca-container">
+    <input
+      type="number"
+      [(ngModel)]="jogadorId"
+      placeholder="Digite o ID do jogador"
+      [disabled]="carregando"
+      min="1"
+    >
+    <button (click)="buscarJogador()" [disabled]="carregando || !jogadorId">
+      {{ carregando ? 'Buscando...' : 'Buscar' }}
+    </button>
+  </div>
+
+  <p-toast></p-toast>
+
+  @if (carregando) {
+    <p-progressSpinner></p-progressSpinner>
+  }
+
+  @if (jogadorOriginal && !editando) {
+    <div class="jogador-info">
+      <h3>Informações do Jogador</h3>
+      <p><strong>ID:</strong> {{ jogadorOriginal.id }}</p>
+      <p><strong>Nome:</strong> {{ jogadorOriginal.nome }}</p>
+      <p><strong>Nascimento:</strong> {{ jogadorOriginal.nascimento }}</p>
+      <p><strong>Posição:</strong> {{ jogadorOriginal.posicao }}</p>
+      <p><strong>Valor:</strong> {{ jogadorOriginal.valor }}</p>
+      <p><strong>Pontuação:</strong> {{ jogadorOriginal.pontuacao }}</p>
+      <p><strong>ID do Time:</strong> {{ jogadorOriginal.time?.id }}</p>
+
+      <button (click)="editando = true" class="btn-editar">
+        Editar Jogador
+      </button>
+    </div>
+  }
+
+  @if (jogadorOriginal && editando) {
+    <div class="form-edicao">
+      <h3>Editar Jogador</h3>
+
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input id="nome" [(ngModel)]="jogadorOriginal.nome">
+      </div>
+
+      <div class="form-group">
+        <label for="nascimento">Nascimento:</label>
+        <input id="nascimento" [(ngModel)]="jogadorOriginal.nascimento" placeholder="Formato: YYYY-MM-DD">
+      </div>
+
+      <div class="form-group">
+        <label for="posicao">Posição:</label>
+        <input id="posicao" [(ngModel)]="jogadorOriginal.posicao">
+      </div>
+
+      <div class="form-group">
+        <label for="valor">Valor:</label>
+        <input id="valor" [(ngModel)]="jogadorOriginal.valor">
+      </div>
+
+      <div class="form-group">
+        <label for="pontuacao">Pontuação:</label>
+        <input id="pontuacao" [(ngModel)]="jogadorOriginal.pontuacao">
+      </div>
+
+      <div class="form-group">
+        <label for="timeId">ID do Time:</label>
+        <input
+          id="timeId"
+          type="number"
+          [(ngModel)]="jogadorOriginal.time.id"
+          min="1"
+        >
+      </div>
+
+      <div class="botoes">
+        <button (click)="salvarAlteracoes()" [disabled]="carregando" class="btn-salvar">
+          {{ carregando ? 'Salvando...' : 'Salvar' }}
+        </button>
+        <button (click)="editando = false" [disabled]="carregando" class="btn-cancelar">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  }
+</div>

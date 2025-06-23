@@ -1,0 +1,71 @@
+<div class="container">
+  <h2>Atualizar Time</h2>
+
+  <div class="busca-container">
+    <input
+      type="number"
+      [(ngModel)]="timeId"
+      placeholder="Digite o ID do time"
+      [disabled]="carregando"
+    >
+    <button (click)="buscarTime()" [disabled]="carregando || !timeId">
+      {{ carregando ? 'Buscando...' : 'Buscar' }}
+    </button>
+  </div>
+
+  <p-toast></p-toast>
+
+  @if (carregando) {
+    <p-progressSpinner></p-progressSpinner>
+  }
+
+  @if (timeOriginal && !editando) {
+    <div class="time-info">
+      <h3>Informações do Time</h3>
+      <p><strong>ID:</strong> {{ timeOriginal.id }}</p>
+      <p><strong>Nome:</strong> {{ timeOriginal.nome }}</p>
+      <p><strong>Cidade:</strong> {{ timeOriginal.cidade }}</p>
+      <p><strong>Estado:</strong> {{ timeOriginal.estado }}</p>
+      <p><strong>Estádio:</strong> {{ timeOriginal.estadio }}</p>
+
+      <button (click)="editando = true" class="btn-editar">
+        Editar Time
+      </button>
+    </div>
+  }
+
+  @if (timeOriginal && editando) {
+    <div class="form-edicao">
+      <h3>Editar Time</h3>
+
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input id="nome" [(ngModel)]="timeEditado.nome">
+      </div>
+
+      <div class="form-group">
+        <label for="cidade">Cidade:</label>
+        <input id="cidade" [(ngModel)]="timeEditado.cidade">
+      </div>
+
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <input id="estado" [(ngModel)]="timeEditado.estado" maxlength="2">
+      </div>
+
+      <div class="form-group">
+        <label for="estadio">Estádio:</label>
+        <input id="estadio" [(ngModel)]="timeEditado.estadio">
+      </div>
+
+      <div class="botoes">
+        <button (click)="salvarAlteracoes()" [disabled]="carregando" class="btn-salvar">
+          {{ carregando ? 'Salvando...' : 'Salvar' }}
+        </button>
+        <button (click)="editando = false" [disabled]="carregando" class="btn-cancelar">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  }
+</div>

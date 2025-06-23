@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Gerenciar Jogador</h2>
+
+  <div class="busca-container">
+    <input
+      type="number"
+      [(ngModel)]="jogadorId"
+      placeholder="Digite o ID do jogador"
+      (keyup.enter)="buscarJogador()"
+      min="0"
+    >
+    <button (click)="buscarJogador()" [disabled]="carregando">
+      {{ carregando ? 'Buscando...' : 'Buscar' }}
+    </button>
+  </div>
+
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+
+  <div *ngIf="carregando" class="loading">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+
+  <div *ngIf="jogadorEncontrado" class="time-info">
+    <h3>Informações do Jogador</h3>
+    <p><strong>ID:</strong> {{ jogadorEncontrado.id }}</p>
+    <p><strong>Nome:</strong> {{ jogadorEncontrado.nome }}</p>
+    <p><strong>Nascimento:</strong> {{ jogadorEncontrado.nascimento }}</p>
+    <p><strong>Posicao:</strong> {{ jogadorEncontrado.posicao }}</p>
+    <p><strong>Time:</strong> {{ jogadorEncontrado.time.nome }}</p>
+
+    <button
+      class="btn-deletar"
+      (click)="confirmarDelecao()"
+      [disabled]="carregando"
+    >
+      Deletar Jogador
+    </button>
+  </div>
+</div>

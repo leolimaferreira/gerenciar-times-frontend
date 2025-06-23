@@ -1,0 +1,39 @@
+<div class="campo">
+  <h2>Escalação do Time {{ timeId }}</h2>
+  <p>Cartoletas disponíveis: {{ cartoletasDisponiveis - calcularTotal() | number:'1.0-2' }}</p>
+
+  <div class="posicao" *ngIf="posicoes.goleiro">
+    <h3>Goleiro</h3>
+    <div class="jogador">{{ posicoes.goleiro.nome }} - R$ {{ posicoes.goleiro.valor }}</div>
+  </div>
+
+  <div class="posicao" *ngIf="posicoes.zagueiros.length">
+    <h3>Zagueiros</h3>
+    <div class="jogador" *ngFor="let j of posicoes.zagueiros">
+      {{ j.nome }} - R$ {{ j.valor }}
+    </div>
+  </div>
+
+  <div class="posicao" *ngIf="posicoes.laterais.length">
+    <h3>Laterais</h3>
+    <div class="jogador" *ngFor="let j of posicoes.laterais">
+      {{ j.nome }} - R$ {{ j.valor }}
+    </div>
+  </div>
+
+  <div class="posicao" *ngIf="posicoes.meias.length">
+    <h3>Meias</h3>
+    <div class="jogador" *ngFor="let j of posicoes.meias">
+      {{ j.nome }} - R$ {{ j.valor }}
+    </div>
+  </div>
+
+  <div class="posicao" *ngIf="posicoes.atacantes.length">
+    <h3>Atacantes</h3>
+    <div class="jogador" *ngFor="let j of posicoes.atacantes">
+      {{ j.nome }} - R$ {{ j.valor }}
+    </div>
+  </div>
+
+  <button (click)="salvarEscalacao()" class="botao-salvar">Salvar Escalação</button>
+</div>

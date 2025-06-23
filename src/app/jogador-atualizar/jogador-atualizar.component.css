@@ -1,0 +1,71 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.busca-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+input[type="number"], input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.time-info, .form-edicao {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-editar {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.btn-salvar {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-cancelar {
+  background-color: #6c757d;
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
